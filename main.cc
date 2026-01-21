@@ -64,14 +64,16 @@ string function1(const string &immutable_str) {
 //Special restriction: you cannot use a standard library function or loops in doing this one
 //The only thing from std:: you can use are the string member functions like .pop_back()
 //YOU: Write my_reverse, do not touch function3()
-string my_reverse(string &str/*, int end = str.size(), int start = 0*/) {
-	reverse(str.begin(), str.end());
-	/*if (end <= start) {
-		return;
+string my_reverse(string &str, int end = -1, int start = 0) {
+	//reverse(str.begin(), str.end());
+	if (end == -1) {
+		end = str.size() - 1;
+	}
+	if (end <= start) {
+		return str;
 	}
 	swap(str.at(start), str.at(end));
-	my_reverse(str, start + 1, end - 1);*/
-	return str; //Placeholder
+	return my_reverse(str, start + 1, end - 1); //Placeholder
 }
 
 //Returns true or false if str is a palindrome
